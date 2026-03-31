@@ -16,7 +16,8 @@ Deno.serve((req: Request) => {
 
   return fetch(url, {
     method: req.method,
-    headers,
+    // headers,
+    headers: req.headers,
     body: req.body,
     redirect: 'manual',
   })
