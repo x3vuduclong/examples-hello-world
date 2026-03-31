@@ -4,8 +4,8 @@ import { serveFile } from "jsr:@std/http/file-server";
 //     return serveFile(req, "./index.html");
 // });
 
-Deno.serve({ port: 80 }, async (request) => {
-  const { pathname, search } = new URL(request.url)
+Deno.serve((req: Request) => {
+    const { pathname, search } = new URL(request.url)
   const url = new URL('.' + pathname, 'https://facebook.com')
   url.search = search
 
@@ -19,4 +19,4 @@ Deno.serve({ port: 80 }, async (request) => {
     body: request.body,
     redirect: 'manual',
   })
-})
+});
